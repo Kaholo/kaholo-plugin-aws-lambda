@@ -5,7 +5,9 @@
     "execProgram": "node",
     "exposeRoute": false,
     "imgUrl": "logo.png",
-    "version": "1.0.0",
+    "description": "Integration with AWS Lambda",
+    "version": "1.0.2",
+    "category": ["CLOUD", "COMPUTE"],
     "settings" : [
         {
             "name": "AWS_ACCESS_KEY_ID",
@@ -68,6 +70,22 @@
                     "name": "runtime",
                     "viewName": "Runtime",
                     "type": "string"
+                }
+            ]
+        },
+        {
+            "name":"UPDATE_FUNCTION_CONFIGURATION",
+            "viewName":"Update function configuration",
+            "params":[
+                {
+                    "name":"CONFIG",
+                    "viewName":"Configuration as JSON",
+                    "type":"string"
+                },
+                {
+                    "name":"REGION",
+                    "viewName":"Region",
+                    "type":"string"
                 }
             ]
         }
