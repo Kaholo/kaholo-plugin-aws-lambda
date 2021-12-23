@@ -6,7 +6,8 @@
     "exposeRoute": false,
     "imgUrl": "logo.png",
     "description": "Integration with AWS Lambda",
-    "version": "1.0.1",
+    "version": "1.0.2",
+    "category": ["CLOUD", "COMPUTE"],
     "settings" : [
         {
             "name": "AWS_ACCESS_KEY_ID",
