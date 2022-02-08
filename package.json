@@ -1,6 +1,6 @@
 {
   "name": "kaholo-plugin-lambda",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Kaholo Plugin for Lambda",
   "main": "app.js",
   "scripts": {

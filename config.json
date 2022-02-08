@@ -6,7 +6,7 @@
     "exposeRoute": false,
     "imgUrl": "logo.png",
     "description": "Integration with AWS Lambda",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "category": ["CLOUD", "COMPUTE"],
     "settings" : [
         {
