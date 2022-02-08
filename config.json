@@ -26,9 +26,11 @@
             "viewName": "Invoke Lambda",
             "params": [
                 {
-                    "name": "region",
+                    "name": "REGION",
                     "viewName": "Region",
-                    "type": "string"
+                    "type": "autocomplete",
+                    "autocompleteType": "function",
+                    "functionName": "listRegions"
                 },
                 {
                     "name": "functionName",
@@ -42,9 +44,11 @@
             "viewName": "Create Function",
             "params": [
                 {
-                    "name": "region",
+                    "name": "REGION",
                     "viewName": "Region",
-                    "type": "string"
+                    "type": "autocomplete",
+                    "autocompleteType": "function",
+                    "functionName": "listRegions"
                 },
                 {
                     "name": "roleArn",
@@ -83,11 +87,13 @@
                     "type":"string"
                 },
                 {
-                    "name":"REGION",
-                    "viewName":"Region",
-                    "type":"string"
+                    "name": "REGION",
+                    "viewName": "Region",
+                    "type": "autocomplete",
+                    "autocompleteType": "function",
+                    "functionName": "listRegions"
                 }
             ]
         }
-    ] 
+    ]
 }

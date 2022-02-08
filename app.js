@@ -1,6 +1,6 @@
 var AWS = require('aws-sdk');
 const fs = require('fs');
-        
+
 function invoke (action, settings) {
     return new Promise((resolve, reject) => {
         if (!settings.AWS_ACCESS_KEY_ID || !settings.AWS_SECRET_ACCESS_KEY || !action.params.region || !action.params.functionName){
@@ -19,7 +19,7 @@ function invoke (action, settings) {
             if (err) // Invoke failed
             {
                 return reject("Error Invoking function: " + err);
-            } 
+            }
             else
             {
                 return resolve(data);
@@ -54,7 +54,7 @@ function createFunction (action, settings) {
             if (err) // Invoke failed
             {
                 return reject("Error Invoking function: " + err);
-            } 
+            }
             else
             {
                 return resolve(data);
@@ -77,7 +77,7 @@ function updateFunctionConfiguration (action,settings) {
             if (err) // Invoke failed
             {
                 return reject("Error updating function: " + err);
-            } 
+            }
             else
             {
                 return resolve(data);
@@ -90,5 +90,6 @@ function updateFunctionConfiguration (action,settings) {
 module.exports = {
     invoke: invoke,
     createFunction: createFunction,
-    UPDATE_FUNCTION_CONFIGURATION: updateFunctionConfiguration
+    UPDATE_FUNCTION_CONFIGURATION: updateFunctionConfiguration,
+    ...require('./autocomplete')
 };
