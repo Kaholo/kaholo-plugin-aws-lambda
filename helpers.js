@@ -24,5 +24,6 @@ function parseAutocomplete(value) {
 
 module.exports = {
     getEc2,
-    getLightsail
+    getLightsail,
+    parseAutocomplete
 }

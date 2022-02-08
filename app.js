@@ -1,12 +1,13 @@
 var AWS = require('aws-sdk');
 const fs = require('fs');
+const helper = require('./helpers');
 
 function invoke (action, settings) {
     return new Promise((resolve, reject) => {
-        if (!settings.AWS_ACCESS_KEY_ID || !settings.AWS_SECRET_ACCESS_KEY || !action.params.region || !action.params.functionName){
+        if (!settings.AWS_ACCESS_KEY_ID || !settings.AWS_SECRET_ACCESS_KEY || !action.params.REGION || !action.params.functionName){
             return reject("missing..." + JSON.stringify(settings) + " and " + JSON.stringify(action));
         }
-        AWS.config.region = action.params.region;
+        AWS.config.region = helper.parseAutocomplete(action.params.REGION);
         accessKeyId = settings.AWS_ACCESS_KEY_ID
         secretAccessKey = settings.AWS_SECRET_ACCESS_KEY
         AWS.config.update({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey});
@@ -30,10 +31,10 @@ function invoke (action, settings) {
 
 function createFunction (action, settings) {
     return new Promise((resolve, reject) => {
-        if (!settings.AWS_ACCESS_KEY_ID || !settings.AWS_SECRET_ACCESS_KEY || !action.params.region || !action.params.roleArn || !action.params.zipFile || !action.params.functionName || !action.params.handler || !action.params.runtime)
+        if (!settings.AWS_ACCESS_KEY_ID || !settings.AWS_SECRET_ACCESS_KEY || !action.params.REGION || !action.params.roleArn || !action.params.zipFile || !action.params.functionName || !action.params.handler || !action.params.runtime)
             return reject("One or more fields are missing");
         const apiVersion = 'latest';
-        const region = action.params.region;
+        const region = helper.parseAutocomplete(action.params.REGION);
         accessKeyId = settings.AWS_ACCESS_KEY_ID
         secretAccessKey = settings.AWS_SECRET_ACCESS_KEY
         AWS.config.update({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey});
@@ -65,12 +66,12 @@ function createFunction (action, settings) {
 
 function updateFunctionConfiguration (action,settings) {
     return new Promise((resolve, reject) => {
-        if (!settings.AWS_ACCESS_KEY_ID || !settings.AWS_SECRET_ACCESS_KEY || !action.params.region || !action.params.roleArn || !action.params.zipFile || !action.params.functionName || !action.params.handler || !action.params.runtime)
+        if (!settings.AWS_ACCESS_KEY_ID || !settings.AWS_SECRET_ACCESS_KEY || !action.params.REGION || !action.params.CONFIG)
             return reject("One or more fields are missing");
         accessKeyId = settings.AWS_ACCESS_KEY_ID;
         secretAccessKey = settings.AWS_SECRET_ACCESS_KEY;
         const apiVersion = 'latest';
-        const region = action.params.REGION;
+        const region = helper.parseAutocomplete(action.params.REGION);
         const lambda = new AWS.Lambda({ apiVersion, region });
         const config = action.params.CONFIG;
         lambda.updateFunctionConfiguration(config, function(err, data) {
